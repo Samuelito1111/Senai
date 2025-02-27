@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+@font-face {
+    font-family: 'Stagera';
+    src: url('/src/fonts/stagera.otf') format('opentype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cornell-red: #ac1b1cff;
+    --thulian-pink: #d867a1ff;
+    --lapis-lazuli: #315fa1ff;
+    --oxford-blue: #112136ff;
+    --floral-white: #fcfaf2ff;
+    --magenta-haze: #834f70ff;
+    --silver: #bdb6b8ff;
+    --raisin-black: #2a2525ff;
+    --fonte-principal: 'Bangers', cursive;
+    --fonte-texto: 'Open Sans', Arial;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(45deg, var(--cornell-red), var(--thulian-pink), var(--lapis-lazuli));
+    transition: background 0.5s ease-in-out;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    height: 380px;
+    position: relative;
+    background-color: var(--floral-white);
+    border-radius: 20px;
+    box-shadow: 0px 35px 80px rgba(42, 37, 37, 0.15);
+    transition: 0.5s ease-in-out;
+    padding: 20px;
+}
+
+.card:hover {
+    height: 450px;
+}
+
+.card .img-box {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: -80px;
+    transition: 0.5s ease-in-out;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 12px solid var(--raisin-black);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.card:hover .img-box {
+    top: -140px;
+    transform: scale(0.75);
+    background: linear-gradient(45deg, var(--cornell-red), var(--thulian-pink), var(--lapis-lazuli));
+}
+
+.card .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 2px;
+    border: solid var(--raisin-black) 6px;
+}
+
+.card .content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 150px;
+    width: 100%;
+    padding: 0px 30px;
+    text-align: center;
+    height: auto;
+    overflow: visible;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease, visibility 0.5s ease, top 0.5s ease;
+}
+
+.card:hover .content {
+    top: 160px;
+    visibility: visible;
+    opacity: 1;
+}
+
+.card .content h1 {
+    font-size: 28px;
+    font-family: var(--fonte-principal);
+    color: var(--oxford-blue);
+}
+
+.card .content h2 {
+    font-family: var(--fonte-principal);
+    color: var(--magenta-haze);
+}
+
+.card .content p {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--raisin-black);
+    line-height: 1.5;
+    text-align: center;
+}
+
+.card .content hr {
+    width: 100%;
+    height: 6px;
+    border: none;
+    outline: none;
+    background: var(--raisin-black);
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.card:hover {
+    animation: explode 0.5s ease-in-out;
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.card .read-more {
+    background: linear-gradient(90deg, var(--raisin-black), var(--cornell-red));
+    padding: 12px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    margin: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+}
+
+.card:hover .read-more {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.2);
+}
+
+@media (max-width: 1024px) and (min-width: 720px) {
+    body {
+        background: linear-gradient(45deg, var(--lapis-lazuli), var(--cornell-red), var(--thulian-pink));
+    }
+
+    .card {
+        width: 350px;
+    }
+
+    .card > .img-box > img {
+        border: 6px solid var(--silver);
+    }
+
+    .card .content hr {
+        background: var(--silver);
+    }
+}
+
+@media(max-width: 719px) {
+    body {
+        background: linear-gradient(45deg, var(--thulian-pink), var(--lapis-lazuli), var(--cornell-red));
+    }
+
+    .card {
+        width: 300px;
+    }
+
+    .card > .img-box > img {
+        border: 6px solid var(--thulian-pink);
+    }
+
+    .card .content hr {
+        background: var(--thulian-pink);
+    }
+}
